@@ -1,0 +1,35 @@
+{
+  "name": "testL",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.2",
+    "native-base": "^2.8.1",
+    "passport": "^0.4.0",
+    "path": "^0.12.7",
+    "react": "16.6.0-alpha.8af6728",
+    "react-native": "0.57.4",
+    "react-navigation": "^2.18.2",
+    "sequelize": "^4.41.0",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel-jest": "23.6.0",
+    "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.48.2",
+    "react-test-renderer": "16.6.0-alpha.8af6728"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
