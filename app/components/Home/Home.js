@@ -12,14 +12,15 @@ import {
     AsyncStorage,
     ScrollView
 } from 'react-native';
-import Chat from "./ChatButton";
 import {
     Button,
     Footer,
     FooterTab,
     Icon
-}
-    from 'native-base';
+} from 'native-base';
+//just a test button for now
+import Chat from "./ChatButton";
+
 
 class HomeScreen extends Component {
     constructor(props) {
@@ -27,6 +28,8 @@ class HomeScreen extends Component {
         this.state = {
             chats: [],
             num: 0,
+            //form info from navigator
+            
         }
     }
 
@@ -42,22 +45,28 @@ class HomeScreen extends Component {
                 }
             ]
         )
-        console.log(AsyncStorage);
+       // console.log(AsyncStorage);
     }
 
     // pushes component to array in state
     handleAdd = () => {
+        this.props.navigation.navigate("Task");
+    }
 
-        /* NOT FOR DEMO
-        TODO: get form filed info on button
+    //TODO: call this function coming back from create screen
+    getFormInfo = () => {
         var cbox = this.state.chats;
-        cbox.push(<Chat></Chat>);
+        cbox.push(
+            //TODO get taskName = {this.props.navigation.state.params.task} to work
+            <Chat>
+
+            </Chat>
+        );
+        //console.log(this.props.navigation.state.params.task)
         this.setState({
             chats: cbox
         })
-        */
 
-        this.props.navigation.navigate("Task");
     }
 
     render() {
@@ -77,11 +86,12 @@ class HomeScreen extends Component {
                 </TouchableOpacity>
                 <ScrollView style={styles.chatList}>
                     <View>
-                        {this.state.chats.map(function (object, i) {
-                            // mapping the array out into the 'DOM' 
-                            // In React, all array items that are map NEED A KEY
-                            return <Chat key={i}>
-                            </Chat>
+                        {this.state.chats.map((message, index) => {
+                            return (
+                                <Chat key = {index}>
+
+                                </Chat>
+                            )
                         })}
                     </View>
                 </ScrollView>
@@ -106,22 +116,21 @@ class HomeScreen extends Component {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        backgroundColor: 'aliceblue',
+        backgroundColor: '#e6f7ff',
     },
     container: {
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: '6%',
+        paddingTop: '1%',
     },
     header: {
-        borderRadius: 10,
         backgroundColor: 'navy',
         marginBottom: 20,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.3,
         shadowRadius: 2,
-        width: '95%',
+        width: '100%',
     },
     h1: {
         color: 'white',
@@ -169,12 +178,12 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 0,
         right: 0,
-        bottom: '-2%',
-        marginBottom: '14%',
-        height: 20,
+        top: '88%',
+        marginBottom: '3%',
+        backgroundColor: '#e6f2ff',
     },
     ftBtn: {
-       
+
     }
 })
 

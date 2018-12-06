@@ -45,7 +45,7 @@ class Logins extends Component {
     loadState = async () => {
         var value = await AsyncStorage.getItem('user');
         if (value !== null) {
-            this.props.navigation.navigate('HomeMain');
+            this.props.navigation.navigate('HomeLogin');
         }
     }
 
@@ -57,7 +57,7 @@ class Logins extends Component {
                 "Accept": "application/json",
                 'Content-Type': 'application/json',
             },
-            //getting values, the RN alternative to body parser is getting form input stored in the state
+            // getting values, the RN alternative to body parser is getting form input stored in the state
             // we are naming the object body for convention, because in the backend we are used to req.body etc
             body: JSON.stringify({
                 username: this.state.username,

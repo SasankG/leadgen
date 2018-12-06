@@ -51,7 +51,7 @@ class ChatRoom extends React.Component {
   renderMessages = () => {
     return this.state.messages.map((message, index) => {
       return (
-        <Text key={index}>
+        <Text>
           {message}
         </Text>
       )

@@ -8,10 +8,10 @@ import {
     TouchableOpacity,
     TextInput,
     KeyboardAvoidingView,
-    Alert,
-    ImageBackground,
-    AsyncStorage
+    ScrollView,
 } from 'react-native';
+//import chat button -- TESTING
+import Chat from "../Home/ChatButton";
 
 class AddTask extends Component {
     constructor(props) {
@@ -22,6 +22,9 @@ class AddTask extends Component {
             location: '',
             phoneNum: '',
             email: '',
+            //chat button storage after retrieving props from parent
+            // just testing sending props to children
+            chatStore: [],
         }
     }
 
@@ -36,19 +39,56 @@ class AddTask extends Component {
         })
     }
 
-    handleSignUp = () => {
-        if (this.state.tastName == '') {
+    handleSignUp = (data) => {
+        if (this.state.taskName == '') {
             alert('fill in task name')
         } else if (this.state.taskDescriptio == '') {
             alert('fill in task description')
         } else if (this.state.email == '') {
             alert('fill in email')
         } else {
-            this.doSignUp();
+            this.doSignUp(data);
         }
     }
 
-    
+    doSignUp = (data) => {
+        var cbose = this.state.chatStore;
+        cbose.push(
+            // passing props through to child component
+            // WORKS
+            <Chat taskName = {this.state.taskName} taskDescriptio = {this.state.taskDescriptio}></Chat>
+        );
+        this.setState({
+            chatStore: cbose
+        })
+        //console.log(this.state.chatStore)
+        // clearing state again
+        this.setState({
+            taskName: '',
+            taskDescriptio: '',
+            location: '',
+            phoneNum: '',
+            email: '',
+        })
+        // then navigate back to home
+        // this.props.navigation.navigate("HomeMain");
+
+        // TESTING
+        // send prop through navigator to home page
+        const {navigate} = this.props.navigation;
+        var task = this.state.taskName
+        var desc = this.state.taskDescriptio
+        
+        this.props.navigation.push({
+            name: 'HomeMain',
+            passProps: {
+                task: data
+            }
+          })
+        navigate('HomeMain');
+        console.log(this.props.navigation.state.params) 
+    }
+
 
     render() {
         return (
@@ -57,13 +97,13 @@ class AddTask extends Component {
                     <Text style={styles.header}>What do you need help with?</Text>
                     <Text style={styles.login} style={styles.login}> Please fill out all fields </Text>
 
-                    <TextInput onChangeText={(taskName) => this.setState({ taskName})} placeholder='Add a Task' style={styles.input}></TextInput>
+                    <TextInput onChangeText={(taskName) => this.setState({ taskName })} placeholder='Add a Task' style={styles.input}></TextInput>
                     <TextInput onChangeText={(taskDescriptio) => this.setState({ taskDescriptio })} placeholder='Task Description' style={styles.input}></TextInput>
                     <TextInput onChangeText={(email) => this.setState({ email })} placeholder='Enter your Email' style={styles.input}></TextInput>
-                    <TextInput onChangeText={(phoneNum) => this.setState({ phoneNum})} placeholder='Enter your Phone Number' style={styles.input}></TextInput>
+                    <TextInput onChangeText={(phoneNum) => this.setState({ phoneNum })} placeholder='Enter your Phone Number' style={styles.input}></TextInput>
                     <TextInput onChangeText={(location) => this.setState({ location })} placeholder='Where is this task?' style={styles.input}></TextInput>
 
-                    <TouchableOpacity style={styles.btn} onPress={this.handleSignUp}>
+                    <TouchableOpacity style={styles.btn} onPress={() => this.doSignUp('hello')}>
                         <Text style={styles.submit}>Add Task</Text>
                     </TouchableOpacity>
                 </View>

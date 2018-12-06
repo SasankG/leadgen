@@ -5,11 +5,6 @@ import {
     View,
     StyleSheet,
     TouchableOpacity,
-    TextInput,
-    KeyboardAvoidingView,
-    Alert,
-    ImageBackground,
-    AsyncStorage
 } from 'react-native';
 
 class Chat extends Component {
@@ -20,8 +15,11 @@ class Chat extends Component {
         return (
             <TouchableOpacity>
                 <View style={styles.chatBtns}>
-                    <Text>
-                        Testing
+                    <Text style ={styles.title}>
+                        {this.props.taskName}
+                    </Text>
+                    <Text style = {styles.description}>
+                        {this.props.taskDescriptio}
                     </Text>
                 </View>
             </TouchableOpacity>
@@ -41,6 +39,19 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         margin: 10,
     },
+    title: {
+        color: 'white',
+        fontSize: 24,
+        marginLeft: 20,
+        paddingTop: 10,
+    },
+    description: {
+        color: 'white',
+        fontSize: 14,
+        marginLeft: 20,
+        marginRight: 20,
+        paddingBottom: 10,
+    }
 })
 
 
