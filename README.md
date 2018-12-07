@@ -4,4 +4,4 @@
 
 ### LEADGEN is powered by React-Native/Node.js/Express.js/MySQL/Socket.io
 
-![LeadGen-Login](/screenshots/lghome.png&s=200)
+<img src="./screenshots/lghome.png" width="400" height="790">
