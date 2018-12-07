@@ -4,4 +4,5 @@
 
 ### LEADGEN is powered by React-Native/Node.js/Express.js/MySQL/Socket.io
 
-<img src="./screenshots/lghome.png" width="20%">
+<p align = 'center'><img src="./screenshots/lghome.png" width="20%"></p>
+
